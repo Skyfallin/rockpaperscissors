@@ -8,8 +8,8 @@ public class testGUI extends JFrame {
     private JPanel panel1;
     private JLabel userSide;
     private JButton closeButton;
-
-    public static void main(String[] args)
+/*
+   public static void main(String[] args)
     {
         testGUI test = new testGUI();
     }
@@ -34,4 +34,5 @@ public class testGUI extends JFrame {
     private void createUIComponents() {
         // TODO: place custom component creation code here
     }
+*/
 }
