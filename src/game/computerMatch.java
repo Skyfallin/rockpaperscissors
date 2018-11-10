@@ -1,5 +1,7 @@
 package game;
 
+import GUI.Results;
+
 import javax.swing.*;
 import java.util.Random;
 
@@ -14,6 +16,7 @@ public class computerMatch {
         int userTempScore = 0;
         int computerTempScore = 0;
         int numOfRounds;
+        Results frame = new Results();
 
         // ask user to specify number of rounds
         String inputRounds = JOptionPane.showInputDialog("Please specify a number of rounds. (1-5)");
@@ -27,11 +30,20 @@ public class computerMatch {
                 userChoice = JOptionPane.showInputDialog("Please select either rock (1), paper (2), or scissors (3).");
                 convertedUserChoice = Integer.parseInt(userChoice);
 
+                //sets up new round
+                frame.playRound();
+
                 // generate a random value
                 Random rand = new Random();
 
                 // bound that stuff, add '1' so it doesn't start at 0.
                 computerChoice = 1 + rand.nextInt(3);
+
+                //adds pictures for choices on GUI
+                frame.displayUserChoice(convertedUserChoice);
+                frame.displayOpponentChoice(computerChoice);
+                frame.userChoice.setVisible(true);
+                frame.opponentChoice.setVisible(true);
 
                 switch (convertedUserChoice) {
                     case 1:
