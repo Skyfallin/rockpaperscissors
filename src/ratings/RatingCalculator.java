@@ -7,7 +7,7 @@ public class RatingCalculator {
     }
 
     // calculator
-    int calculate2PlayersRating(int player1Rating, int player2Rating, String outcome, int K) {
+    public static int calculateRatings(int player1Rating, int player2Rating, String outcome, int K) {
 
         double actualScore;
 
