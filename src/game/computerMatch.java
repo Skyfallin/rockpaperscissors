@@ -11,8 +11,13 @@ public class computerMatch {
         String userChoice;
         int convertedUserChoice;
         int computerChoice;
+
         int userTempScore = 0;
         int computerTempScore = 0;
+
+        int userOverall = 0;
+        int computerOverall = 0;
+
         int numOfRounds;
 
         // ask user to specify number of rounds
@@ -95,17 +100,32 @@ public class computerMatch {
             }
 
             // determine our winner, store their overall score
+            if (userTempScore == 2) {
+                userOverall++;
+            } else {
+                computerOverall++;
+            }
 
-
-            // reset our scores
+            // reset our per-round scores
             userTempScore = 0;
             computerTempScore = 0;
 
-            if (i == (numOfRounds-1)) {
+            // if the user or the computer wins a majority of the rounds, stop the game
+            if (userOverall > (.5*numOfRounds) || computerOverall > (.5*numOfRounds)) {
                 JOptionPane.showMessageDialog(null, "Game over!");
+                break;
             } else {
-                JOptionPane.showMessageDialog(null, "Moving on to round " + (i+2) + "!");
+                JOptionPane.showMessageDialog(null, "Moving on to round " + (i + 2)
+                        + "!\nYour overall score is " + userOverall + "/" + numOfRounds
+                        + "\nThe computer's overall score is " + computerOverall + "/" + numOfRounds);
             }
+        }
+
+        // TODO: display match score after each round
+        if (userOverall > computerOverall) {
+            JOptionPane.showMessageDialog(null, "You beat the computer! :)");
+        } else {
+            JOptionPane.showMessageDialog(null, "The computer beat you! :(");
         }
     }
 }
